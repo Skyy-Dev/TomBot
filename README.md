@@ -27,6 +27,7 @@ pip install ffmpeg
 ```
 
 # .env
+//NOTE: AS OF July 2021 AN ENV FILE IS NOW INCLUDED WITH THE DOWNLOAD, SIMPLY EDIT IT IN THE 'Source' FOLDER
 - Firstly, make sure you have the env extension installed in Python by opening your terminal and entering:
 ```
 pip install python-dotenv
