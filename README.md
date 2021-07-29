@@ -4,6 +4,7 @@ Created by Tom Kennedy: Skyrub#1376
 
 # Features
 - Basic economy system
+- YouTube to audio downloader (Integrated with Discord!)
 - Text commands
 - Voice commands
 
@@ -24,6 +25,10 @@ pip install python-dotenv
 - ffmpeg
 ```
 pip install ffmpeg
+```
+- youtube_dl
+```
+pip install youtube_dl
 ```
 
 # .env
