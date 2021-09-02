@@ -1,0 +1,28 @@
+REM Author - Skyrub-DEV
+REM Repo - https://github.com/Skyrub-dev
+REM SAVE AS PAYLOAD.DD TO CIRCUITPY(DRIVELET:) WITH PICO
+REM SAVE AS INJECT.BIN TO RUBBER DUCKY - BUT BE SURE TO ENCODE BEFORE YOU DO
+DELAY 1000
+CONTROL ESCAPE
+DELAY 100
+STRING ubuntu
+ENTER
+DELAY 1000
+REM ********************************
+REM USERNAME AND LOCAL ADDRESS HERE
+REM ********************************
+STRING ssh EXAMPLEUSER@192.168.xxx.xxx
+ENTER
+DELAY 500
+REM *******************************
+REM PASSWORD HERE
+REM *******************************
+STRING examplepassword
+ENTER
+DELAY 500
+STRING cd Downloads
+ENTER
+STRING cd pu-master
+ENTER
+STRING python3 bot.py
+ENTER
