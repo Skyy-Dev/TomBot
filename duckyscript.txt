@@ -2,6 +2,7 @@ REM Author - Skyrub-DEV
 REM Repo - https://github.com/Skyrub-dev
 REM SAVE AS PAYLOAD.DD TO CIRCUITPY(DRIVELET:) WITH PICO
 REM SAVE AS INJECT.BIN TO RUBBER DUCKY - BUT BE SURE TO ENCODE BEFORE YOU DO
+REM ************************************************************************
 DELAY 1000
 CONTROL ESCAPE
 DELAY 100
