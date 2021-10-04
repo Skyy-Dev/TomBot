@@ -6,10 +6,10 @@
 #     \_/\___/|_| |_| |_\____/ \___/ \__|
 #                                                                         
 
-#V1.1 - Last updated 13th July 2021
+#V1.1 - Last updated 04/10/2021
 #Tom Kennedy 2021
 
-#Github repository: https://github.com/Skyrub-dev/Discord_bot
+#Github repository: https://github.com/Skyrub-dev/Discord_Bot_Public
 
 import os
 import random
