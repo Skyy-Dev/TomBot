@@ -1,4 +1,4 @@
-# Discord_Bot_Public
+# TomBot
 A simple Discord bot written in Python using Discord.py module! Includes basic economy system and simple voice commands.
 Created by Tom Kennedy: Skyrub#1376
 
