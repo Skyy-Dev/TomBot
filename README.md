@@ -2,6 +2,8 @@
 A simple Discord bot written in Python using Discord.py module! Includes basic economy system and simple voice commands.
 Created by Tom Kennedy: Skyrub#1376
 
+Please read the comments in the code if you're wanting to clone it for your own use as some features won't work without changing certain directories!
+
 # Features
 - Basic economy system
 - YouTube to audio downloader (Integrated with Discord!)
