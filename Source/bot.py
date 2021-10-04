@@ -1,11 +1,10 @@
-#    ______               ______       _   
-#    | ___ \              | ___ \     | |  
-#    | |_/ /__  _ __   ___| |_/ / ___ | |_ 
-#    |  __/ _ \| '_ \ / _ \ ___ \/ _ \| __|
-#    | | | (_) | |_) |  __/ |_/ / (_) | |_ 
-#    \_|  \___/| .__/ \___\____/ \___/ \__|
-#             | |                         
-#             |_|    
+#    _____              ______       _   
+#   |_   _|             | ___ \     | |  
+#     | | ___  _ __ ___ | |_/ / ___ | |_ 
+#     | |/ _ \| '_ ` _ \| ___ \/ _ \| __|
+#     | | (_) | | | | | | |_/ / (_) | |_ 
+#     \_/\___/|_| |_| |_\____/ \___/ \__|
+#                                                                         
 
 #V1.1 - Last updated 13th July 2021
 #Tom Kennedy 2021
@@ -30,22 +29,19 @@ from discord.ext import commands
 from discord.utils import get
 from dotenv import load_dotenv
 
+#can remove if cloning or adapted to your own directory
 os.chdir=("C:\\Users\\Tom\\Desktop\\Holidays_Python\\discord_bot")
-#https://stackoverflow.com/questions/63464807/how-to-save-traceback-error-information-into-a-file
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix="!")
-
-#placeholder, will change, deez nuts will never die
-act = discord.Game("With DEEZ NUTS")
+act = discord.Game("With Python!")
 embed = discord.Embed()
 bot.remove_command('help')
 players = {}
 
-#ascii font = doom or big http://www.patorjk.com/software/taag/#p=display&f=Doom&t=Tom%20Kendy
 introascii = '''
    _____                            _           _ _ 
   / ____|                          | |         | | |
@@ -60,7 +56,7 @@ async def on_ready():
     guild = discord.utils.get(bot.guilds, name = GUILD)
     await bot.change_presence(status=discord.Status.online, activity=act)
     print("------------------------------------------------------------------------------------------")
-    print("Popebot - V1.1 (07/21) !DEV BUILD!")
+    print("TomBot - V1.2 (10/21)")
     print("Public repo - https://github.com/Skyrub-dev/Discord_Bot_Public")
     print("Any issues or bugs with the bot? contact me here - Discord: Skryub#1376")
     print("----------------------------------- Beginning of debug ------------------------------------")
@@ -74,10 +70,6 @@ async def on_ready():
     
     print(introascii)
 
-#commands
-#https://vcokltfre.dev/tutorial/03-hello/
-#https://discordpy.readthedocs.io/en/latest/ext/commands/commands.html
-
 '''
 ///
 Misc commands
@@ -88,7 +80,7 @@ Misc commands
 async def on_guild_join(guild):
     for channel in guild.text_channels:
         if channel.permissions_for(guild.me).send_messages:
-            embed = discord.Embed(title = "Greetings my children", description = f"Thank you for adding me to {guild.name}. Use !help to discover what I have to offer!")
+            embed = discord.Embed(title = "Hi!", description = f"Thank you for adding me to {guild.name}. Use !help to discover what I have to offer!")
             await channel.send(embed=embed)
 
 @bot.command(name = "ping")
@@ -98,25 +90,16 @@ async def ping(ctx: commands.Context):
 
 @bot.command(name = "invite")
 async def invite(ctx):
-    embed = discord.Embed(Title = "Wanna invite the bot to another server?", description = "https://discord.com/api/oauth2/authorize?client_id=849288493511606292&permissions=8&scope=bot")
+    embed = discord.Embed(Title = "Wanna invite the bot to another server?", description = "https://discord.com/api/oauth2/authorize?client_id=796535397647646741&permissions=8&scope=bot")
     await ctx.send(embed = embed)
 
 @bot.command(name="hello")
 async def hello_world(ctx: commands.Context):
     await ctx.send("Hello, world!")
 
-@bot.command(name="quote")
-async def quotes(ctx: commands.Context):
-    with open("./quotes.json", "r") as file:
-        data = json.load(file)
-        quotes = data['quote']
-
-        response = random.choice(quotes)
-        await ctx.send(response)
-
 @bot.command(name="twitter")
 async def twitter(ctx: commands.Context):
-    await ctx.send("Follow da Ady Pierce Twitter here: https://twitter.com/AdyPierce")
+    await ctx.send("Follow Python's official Twitter here! https://twitter.com/ThePSF")
 
 '''
 ///
@@ -129,47 +112,42 @@ async def help(ctx):
     author = ctx.message.author
 
     embed = discord.Embed(
-        title = "Help from the heavens",
+        title = "Help menu",
         colour = discord.Colour.blue()
     )
-    #add embeds here
-    #embed.set_author(name='Help from the heavens')
-    embed.set_image(url="https://i.imgur.com/VwBN42t.jpg")
-    embed.add_field(name='!quote', value='Recieve a holy quote from the man himself', inline=False)
-    embed.add_field(name='!twitter', value='Follow da Ady Pierce twitter', inline=False)
+
+    embed.add_field(name='!twitter', value='Follow Python twitter', inline=False)
     embed.add_field(name='!ping', value='Get your ping', inline=False)
     embed.add_field(name='!download - *enter_youtube_url*', value='Want to download a song from youtube without having to use those dodgy sites, use this!', inline=False)
     embed.add_field(name="!invite", value = "Want to invite the bot to another server? grab an invite here!", inline=False)
 
     embed.add_field(name = 'Voice commands', value = '-------------------------------------------------------------------------', inline=False)
-    embed.add_field(name = '!bigchungus', value='listen to the very legendary tale of big chungus', inline=False)
+    embed.add_field(name = '!yorushika', value='Plays a cool song from Yorushika', inline=False)
     embed.add_field(name = 'More soon!', value='more commands will be added over time', inline=False)
 
-    embed.add_field(name = 'ChungCoin', value = '-------------------------------------------------------------------------', inline=False)
-    embed.add_field(name = "!chungcoin", value = "Use this to learn more about ChungCoin!", inline=False)
-    embed.add_field(name = "!balance", value = "Fetch your ChungCoin balance with this command", inline=False)
-    embed.add_field(name = "!rates", value = "View the current ChungCoin rates", inline=False)
-    embed.add_field(name = "!slots", value = "Get three numbers correct in a row for a chance to earn ChungCoin!", inline=False)
-    embed.add_field(name = "!daily", value = "Recieve 100 ChungCoin per 24 hours!", inline=False)
+    embed.add_field(name = 'TomCoin', value = '-------------------------------------------------------------------------', inline=False)
+    embed.add_field(name = "!TomCoin", value = "Use this to learn more about TomCoin!", inline=False)
+    embed.add_field(name = "!balance", value = "Fetch your TomCoin balance with this command", inline=False)
+    embed.add_field(name = "!rates", value = "View the current TomCoin rates", inline=False)
+    embed.add_field(name = "!slots", value = "Get three numbers correct in a row for a chance to earn TomCoin!", inline=False)
+    embed.add_field(name = "!daily", value = "Recieve 100 TomCoin per 24 hours!", inline=False)
 
 
-    embed.set_footer(text = "Da Pope wid his brand new lambo")
-    #embed.add_field(name = "Post!", value = "For every message you post, you'll have a 1/50 chance to earn a random amount of ChungCoin!", inline=False)
+    embed.set_footer(text = "Hint: use !ping to check your ping!")
 
     await ctx.send(f"I have bestowed your request upon you, {author}", embed=embed)
 
-@bot.command(pass_context=True, name = "chungcoin")
-async def chungcoin(ctx):
+@bot.command(pass_context=True, name = "Tomcoin")
+async def Tomcoin(ctx):
     author = ctx.message.author
 
-    embed = discord.Embed(title = "ChungCoin info menu")
+    embed = discord.Embed(title = "TomCoin info menu")
 
-    embed.add_field(name = "What is ChungCoin?", value = "ChungCoin is a brand new (very real) EPIC cryptocurrency you can earn just for being active and posting in the server", inline=False)
-    embed.add_field(name = "How do I earn ChungCoin?", value = "Simply posting any message on the server will put you up for a 1/50 chance to earn a random amount of ChungCoin between 1 to 100, the bot will post if you earn any", inline=False)
-    embed.add_field(name = "How do I check how much ChungCoin I own?", value = "To check, simply enter '!balance' to display the amount of ChungCoin you currently own", inline=False)
-    embed.add_field(name = "What can I do with ChungCoin?", value = "Currently, nothing, probably something in the future though", inline=False)
-    embed.add_field(name = "How often will ChungCoin rates change?", value = "Depending on how ChungCoin will be used and evolve will determine how the rates will be changed - use !rates to view current chance and pool of ChungCoin up for grabs", inline=False)
-    embed.set_footer(text = "©ChungCoin 2021 - Tom Kendy, Josh Hall, Tom Sargent")
+    embed.add_field(name = "What is TomCoin?", value = "TomCoin is a virtual currency you can earn just for being active and posting in the server", inline=False)
+    embed.add_field(name = "How do I earn TomCoin?", value = "Simply posting any message on the server will put you up for a 1/50 chance to earn a random amount of TomCoin between 1 to 100, the bot will post if you earn any", inline=False)
+    embed.add_field(name = "How do I check how much TomCoin I own?", value = "To check, simply enter '!balance' to display the amount of TomCoin you currently own", inline=False)
+    embed.add_field(name = "How often will TomCoin rates change?", value = "Depending on how TomCoin will be used and evolve will determine how the rates will be changed - use !rates to view current chance and pool of TomCoin up for grabs", inline=False)
+    embed.set_footer(text = "Get earning!")
 
     await ctx.send(f"I have bestowed your request upon you, {author}", embed=embed)
 
@@ -177,12 +155,12 @@ async def chungcoin(ctx):
 async def rates(ctx):
     author = ctx.message.author
 
-    embed = discord.Embed(title = "Current ChungCoin rates as of: 16/06/2021")
+    embed = discord.Embed(title = "Current TomCoin rates as of: 16/06/2021")
 
-    embed.add_field(name = "Current chance per message of earning ChungCoin:", value = "1/50")
-    embed.add_field(name = "Current pool of ChungCoin to earn:", value = "1 - 100")
+    embed.add_field(name = "Current chance per message of earning TomCoin:", value = "1/50")
+    embed.add_field(name = "Current pool of TomCoin to earn:", value = "1 - 100")
     embed.add_field(name = "Additional note:", value = "These values will most likely be nerfed and/or buffed over time")
-    embed.set_footer(text = "©ChungCoin 2021 - Tom Kendy, Josh Hall, Tom Sargent")
+    embed.set_footer(text = "Good luck!")
 
     await ctx.send(f"I have bestowed your request upon you, {author}", embed=embed)
 
@@ -192,16 +170,15 @@ Voice commands
 ///
 '''
 
-@bot.command(name="bigchungus")
+@bot.command(name="yorushika")
 async def join(ctx):
     connected = ctx.author.voice
     if connected:
         await connected.channel.connect()
         voice = get(bot.voice_clients, guild=ctx.guild)
-        source = FFmpegPCMAudio('music/bigchungus.mp3')
+        source = FFmpegPCMAudio('yorushika.mp3')
         player = voice.play(source)
-        #amount of time before disconnect code executes and bot leaves channel
-        await asyncio.sleep(106)
+        await asyncio.sleep(306)
         await ctx.voice_client.disconnect()
     else:
         await ctx.send("You're not in a voice channel!")
@@ -225,9 +202,9 @@ async def balance(ctx):
 
     wallet_amt = users[str(user.id)]["Wallet"]
 
-    embed = discord.Embed(title = f"{ctx.author.name}'s ChungCoin")
-    embed.add_field(name = "ChungCoin balance", value = wallet_amt)
-    embed.set_footer(text = "©ChungCoin 2021 - Tom Kendy, Josh Hall, Tom Sargent")
+    embed = discord.Embed(title = f"{ctx.author.name}'s TomCoin")
+    embed.add_field(name = "TomCoin balance", value = wallet_amt)
+    embed.set_footer(text = "Want more TomCoin? use !spin")
     await ctx.send(embed = embed)
 
 async def chung_account(user):
@@ -249,28 +226,11 @@ async def chung_data():
         users = json.load(f)
     return users
 
-#new
-#https://stackoverflow.com/questions/51705385/discord-py-levelling-system-using-json-how-can-i-add-these-few-things-to-my-cod
-
 async def more_chung(user):
     users = await chung_data()
 
     coin = random.randrange(100)
     users[str(user.id)]["Wallet"] += coin
-
-#command only able to be executed by my account (Skyrub#1376)
-@bot.command(name="owner")
-@commands.is_owner()
-async def owner(ctx: commands.Context):
-    await ctx.send("This is only avaiable to the owner!")
-
-@bot.command(name = "serverlist")
-@commands.is_owner()
-#experimental
-async def serverlist(ctx):
-    for guild in bot.guilds:
-        for member in guild.members:
-            print(member)
 
 '''
 ///
@@ -279,35 +239,33 @@ DEBUGGING
 '''
 
 @bot.command(name = "100debugcoin")
-#@commands.is_owner()
 async def debugcoin(ctx):
     users = await chung_data()
     user = ctx.author
-    await ctx.send("This command is for the purpose of debugging chungcoin, if you stumble upon this by accident, too bad, you now have 100 chungcoin")
+    await ctx.send("Given 100 TomCoin")
     users[str(user.id)]["Wallet"] = 100
     
     with open("chungbank.json", "w") as f:
             json.dump(users, f)
 
 @bot.command(name = "1000debugcoin")
-#@commands.is_owner()
 async def debugcoin(ctx):
     users = await chung_data()
     user = ctx.author
-    await ctx.send("This command is for the purpose of debugging chungcoin, if you stumble upon this by accident, too bad, you now have 1000 chungcoin")
+    await ctx.send("Given 1000 TomCoin")
     users[str(user.id)]["Wallet"] = 1000
     
     with open("chungbank.json", "w") as f:
             json.dump(users, f)
 
-
+#Will reset when the bot is restarted
 @bot.command(name = "daily")
 @commands.cooldown(rate=1, per=86400)
 async def daily(ctx):
     users = await chung_data()
     user = ctx.author
     dailyreward = 100
-    await ctx.send("Claimed daily reward of 100 ChungCoin! Come back in another 24 hours for more")
+    await ctx.send("Claimed daily reward of 100 TomCoin! Come back in another 24 hours for more")
     users[str(user.id)]["Wallet"] += dailyreward
     
     with open("chungbank.json", "w") as f:
@@ -319,7 +277,7 @@ async def reset(ctx):
     users = await chung_data()
     user = ctx.author
     
-    await ctx.send("Are you sure you want to reset your chungcoin? this process is irreversible!!")
+    await ctx.send("Are you sure you want to reset your Tomcoin? this process is irreversible!!")
     await ctx.send("Type 'yes' to reset, otherwise type 'no'")
 
     def check(msg):
@@ -350,14 +308,11 @@ async def on_message(message):
     user = message.author
     wallet_amt = users[str(user.id)]["Wallet"]
 
-
-    #works in an if statement however none of the other commands work
-    #await message.channel.send("this is an example message")
     if random.random() <= 1/50: #original value 1/50
         earnings = random.randrange(100)
-        earned = discord.Embed(title = f"You have been #blessed, {message.author}, the Pope has bestowed: {earnings} ChungCoin! upon you!")
+        earned = discord.Embed(title = f"Congrats!, {message.author}, you've been awarded: {earnings} TomCoin!")
         await message.channel.send(embed = earned)
-        #await message.channel.send(f"The Pope has bestowed: {earnings} ChungCoin upon you! #blessed")
+
         users[str(user.id)]["Wallet"] += earnings
 
         with open("chungbank.json", "w") as f:
@@ -365,20 +320,14 @@ async def on_message(message):
 
     await bot.process_commands(message)
     
-     #if rolename in user.roles:
-    
-    #need to find a way to check if a the role has been created don't create a new one
-    role = discord.utils.get(message.guild.roles, name = "ChungCoin Master")
+    role = discord.utils.get(message.guild.roles, name = "TomCoin Master")
     
     if wallet_amt >= 1000:
         if role in user.roles:
             return
         else:
-            #role = discord.utils.get(message.guild.roles, name = "ChungCoin Novice")
             await user.add_roles(role)
-            #rewardrole = discord.utils.get(message.guild.roles, name = "ChungCoin Novice")
-            #await bot.create_role(rewardrole)
-            await message.channel.send("Congrats on da new role YOU GOT 1000 CHUNGCOIN")
+            await message.channel.send("You've earned: 'TomCoin master' by earning 1000 TomCoin in total!")
        
     await bot.process_commands(message)
 
@@ -409,7 +358,7 @@ async def slots(ctx):
 
     if one == two == third:
         winningembed = discord.Embed(title = "Winner!")
-        winningembed.add_field(name = "Congrats!", value = "You've just won 100 chungcoin!")
+        winningembed.add_field(name = "Congrats!", value = "You've just won 100 TomCoin!")
         users[str(user.id)]["Wallet"] += pot
         with open("chungbank.json", "w") as f:
             json.dump(users, f)
@@ -420,8 +369,6 @@ async def slots(ctx):
         failembed.add_field(name = "No win this time :(", value = "Spin again for a chance to win!")
         await ctx.send(embed = failembed)
         
-#error handling - prevents spamming of the slots command
-#probably a way to make this more neater and efficient
 '''
 ///
 Error handlers
@@ -454,11 +401,6 @@ async def serverinfo(ctx):
 Test features - Youtube audio downloader
 ///
 '''
-
-#embed and try get the files to download to 'song_dl_yt' for future reference to make it look a lot neater
-
-#add error for the user not including the URL or an invalid URL
-
 @bot.command(name = 'download')
 @commands.cooldown(rate=1, per=30)
 async def download(ctx, url: str):
@@ -481,6 +423,7 @@ async def download(ctx, url: str):
         if file.endswith(".mp3"):
             os.rename(file, "download.mp3")
     await ctx.send("Downloaded! here's your file: (File may take a couple of seconds to post)")
+   #If cloning will need to dynamically adapt this depending on where you want audio files to save
     await ctx.send(file=discord.File(r'C:\Users\Tom\Desktop\Holidays_Python\discord_bot\download.mp3'))
     os.remove("download.mp3")
     '''// for purpose of debug //'''
@@ -498,9 +441,3 @@ async def download_error(ctx: commands.Context, error):
         await ctx.send("Missing Argument")
 
 bot.run(TOKEN)
-
-#Potential future ideas -
-#leaderboard system??
-#more music to implement?
-#shop feature - give roles depending on chungcoin milestones
-#Look for other bots online and see what other bots have implemented
