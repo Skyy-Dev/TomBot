@@ -345,7 +345,7 @@ async def slots(ctx):
 
     embed = discord.Embed(title = "Your slot results!")
     
-    embed.add_field(name = "Current pot winnings:", value = "100 chungcoin")
+    embed.add_field(name = "Current pot winnings:", value = "100 Tomcoin")
 
     users = await chung_data()
     user = ctx.author
