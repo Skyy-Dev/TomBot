@@ -257,6 +257,10 @@ async def debugcoin(ctx):
     with open("chungbank.json", "w") as f:
             json.dump(users, f)
 
+'''
+///
+'''
+         
 #Will reset when the bot is restarted
 @bot.command(name = "daily")
 @commands.cooldown(rate=1, per=86400)
