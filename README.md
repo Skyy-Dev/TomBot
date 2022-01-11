@@ -24,7 +24,7 @@ pip install discord.py
 ```
 pip install python-dotenv
 ```
-- ffmpeg
+- ~~ffmpeg~~ - NO LONGER APPLICABLE, NEED TO CHANGE
 ```
 pip install ffmpeg
 ```
