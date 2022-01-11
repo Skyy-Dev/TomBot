@@ -402,7 +402,7 @@ async def serverinfo(ctx):
 '''
 ///
 Test features - Youtube audio downloader
-(Known bug)
+(Known bug - Need to fix ffmpeg)
 ///
 '''
 @bot.command(name = 'download')
