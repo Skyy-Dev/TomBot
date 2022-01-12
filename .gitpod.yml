@@ -6,4 +6,4 @@ tasks:
       pip install youtube_dl
     command: |
       cd Source
-      python bot.py
+      echo 'Remember to add your token and server name to the .env file before running!'
