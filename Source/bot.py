@@ -64,8 +64,8 @@ async def on_ready():
     print(time.strftime('%d/%m/%Y %H:%M:%S\n'))
 
     print(
-    f'[ OK ] established {bot.user}s connection to Discord services!\n'
-    f'[ OK ] Connected to the following guild: {guild.name} (id: {guild.id})'
+    f'Established {bot.user}s connection to Discord services!\n'
+    f'Connected to the following guild: {guild.name} (id: {guild.id})'
     )
     
     print(introascii)
